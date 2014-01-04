@@ -1,3 +1,5 @@
+![alt tag](https://raw.github.com/danielauener/projectname/branch/path/to/img.png)
+
 generator-wp-grunted-theme
 ==========================
 
