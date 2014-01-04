@@ -1,0 +1,167 @@
+.sticky {
+
+	background: none;
+
+	.post-title {}
+}
+
+.alignleft {
+	float:left;
+}
+
+.alignright {
+	float:right;
+}
+
+.aligncenter {
+	float: none;
+}
+
+.wp-caption-text {
+	background: $color1;
+}
+
+.gallery-caption {
+	background: $color1;
+}
+
+.bypostauthor {
+	background: $color1;
+}
+
+.post-links {
+
+	@include clearfix;
+	width: 70%;
+	margin: 1em auto;
+
+	a {
+		float: right;
+	}
+
+	a:first-child {
+		float: left;
+	}
+
+}
+
+.linked-page-nav {
+	margin-top: 1em;
+}
+
+.widget {
+	@include span-columns(4);
+	@include font-size(0.8);
+	padding: 2em 1.8em;
+
+	position: relative;
+
+	h2 {
+		@include font-size(1.1);
+		text-align: center;
+		margin-top: 0;
+		margin-bottom: 0.5em;
+		border-bottom: 0.1em solid $color2;
+	}
+
+	ul {
+		padding-left: 1.6em;
+	}
+
+	p {
+		text-align: justify;
+	}
+}
+
+.widget:nth-child(3n) {
+	@include omega();
+}
+
+.widget:nth-child(3n+1) {
+	clear: left;
+}
+
+.widget_search {
+
+	label {
+		display: block;
+		padding: 0.2em 0;
+	}
+
+	input {
+		width: 100%;
+	}
+
+}
+
+#searchsubmit, #submit {
+	padding: 0.3em 0.4em;
+	border: 1px solid $color1;
+	margin-top: 0.2em;
+	background-color: $color3;
+	color: $color1;
+	box-shadow: none;
+}
+
+.comments {
+	@include span-columns(10);
+	@include shift(1);
+	@include font-size(0.9);
+
+	background-color: $color1;
+	margin-bottom: 3em;
+	padding: 2em;
+
+	ol {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+}
+
+.comment-body {
+	margin-bottom: 1.5em;
+}
+
+.children .comment-body {
+	padding-left: 2em;
+}
+
+.comment-author {
+	border-top: 0.1em solid $color2;
+	border-bottom: 0.1em solid $color2;
+	text-align: center;
+	padding: 0.6em 0;
+	position:relative;
+
+	img {
+		position:absolute;
+		top: 0;
+		bottom:0;
+		left:0;
+		height:100%;
+		width:auto;
+	}
+}
+
+.byuser .comment-author {
+	background-color: $color3;
+	color: $color1;
+
+	a {
+		color: $color1;
+		text-decoration: underline;
+	}
+}
+
+.comment-meta {
+	text-align: center;
+	margin-top:0.2em;
+	margin-bottom: 0.8em;
+}
+
+.comments-title {
+	@include font-size(1.1);
+	text-align:center;
+	margin-top: 0;
+}

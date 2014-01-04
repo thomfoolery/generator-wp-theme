@@ -1,0 +1,10 @@
+.footer-widgets {
+	@include clearfix;
+	@include span-columns(12);
+
+	background: $color1;
+	padding: 1.5em 0;
+	list-style: none;
+	margin: 0;
+
+}

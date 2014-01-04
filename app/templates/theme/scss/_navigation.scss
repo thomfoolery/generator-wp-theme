@@ -1,0 +1,17 @@
+.main-menu {
+	padding-top: 20px;
+
+	.menu-item {
+
+	}
+
+	.menu-item a {
+		color: scale-lightness($color1, 70%);
+		white-space: nowrap;
+	}
+
+	.menu-item a:hover {
+		color: $color2;
+	}
+
+}
