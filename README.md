@@ -1,11 +1,29 @@
 ![alt tag](https://raw.github.com/danielauener/generator-wp-grunted-theme/master/header.png)
 
-generator-wp-grunted-theme
-==========================
+# generator-wp-grunted-theme
 
-A WordPress theme YeoMan generator, to kickstart WordPress theme development with yo, sass and grunt
+A WordPress theme [Yeoman](http://yeoman.io) generator, to kickstart WordPress
+theme development with yo, sass and grunt.
 
-A generator for [Yeoman](http://yeoman.io).
+**Note:** For now, this generator is an early development version, so expect many
+changes and some bugs in both the generator and generated theme.
+
+## What do you get
+- A fully funtional WordPress theme with a working *grunt* development environment.
+- The generated theme
+  - is tested against the [Theme check](http://wordpress.org/plugins/theme-check/) and [Theme Forest check](http://wordpress.org/plugins/themeforest-check/) plugins and runs without errors, warnings or recommendations
+  - is visually tested with [Testdata for the theme unit tests](https://wpcom-themes.svn.automattic.com/demo/theme-unit-test-data.xml)
+  - runs without errors or warnings in debug mode
+  - follows the WordPress coding standards a 100%
+- Well structured SCSS development files
+- grunt tasks for
+  - compiling, merging and compressing all SCSS files to one *style.css* file
+  - compiling, merging and compressing all JS files to one file
+  - running jshint on all JS files
+  - watching all changes and doing the hinting, compiling and merging automatically
+  - generating a production ready distribution version of the theme
+  - checking all PHP against WordPress coding standards automatically with PHP_Code_Sniffer
+
 
 ## Getting Started
 
@@ -15,13 +33,15 @@ Not every new computer comes with a Yeoman pre-installed. He lives in the [npm](
 $ npm install -g yo
 ```
 
-To install generator-wp-grunted-theme from npm, run:
+To install generator-wp-grunted-theme from npm, you have to install it from this
+github repo, run:
 
 ```
-$ npm install -g generator-wp-grunted-theme
+$ npm install -g https://github.com/danielauener/generator-wp-grunted-theme/tarball/master
 ```
 
-Finally, initiate the generator:
+Finally, initiate the generator. The most useful place to run this command is in
+a working WordPress installations *themes* directory:
 
 ```
 $ yo generator-wp-grunted-theme
