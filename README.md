@@ -16,6 +16,7 @@ changes and some bugs in both the generator and generated theme.
   - runs without errors or warnings in debug mode
   - follows the WordPress coding standards a 100%
 - Well structured SCSS development files
+- A pre-filled HTML documentation based on the [Themeforest documentation template](http://blog.themeforest.net/site-news/building-better-template-documentation/)
 - grunt tasks for
   - compiling, merging and compressing all SCSS files to one *style.css* file
   - compiling, merging and compressing all JS files to one file
