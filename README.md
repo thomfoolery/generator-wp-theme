@@ -45,7 +45,7 @@ Finally, initiate the generator. The most useful place to run this command is in
 a working WordPress installations *themes* directory:
 
 ```
-$ yo generator-wp-grunted-theme
+$ yo wp-grunted-theme
 ```
 
 ### Getting To Know Yeoman
