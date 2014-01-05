@@ -8,13 +8,11 @@
  */
 ?>
 
-				<ul class="footer-widgets"><?php
-					if ( function_exists( 'dynamic_sidebar' ) ) :
-						dynamic_sidebar( 'footer-sidebar' );
-					endif; ?>
-				</ul>
+      <footer class="site-footer">
+        <!-- TO DO -->
+      </footer>
 
-			</div>
-		<?php wp_footer(); ?>
-	</body>
+      </div>
+  <?php wp_footer(); ?>
+  </body>
 </html>

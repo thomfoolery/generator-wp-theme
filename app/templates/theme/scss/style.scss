@@ -10,15 +10,7 @@
 	License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
 
-@import "vendor/normalize";
-@import "vendor/bourbon/bourbon";
-@import "grid-settings";
-@import "base";
-@import "typography";
-@import "components";
-@import "wp-base";
-@import "header";
-@import "navigation";
-@import "content";
-@import "post-formats";
-@import "footer";
+@import "bootstrap.scss";
+@import "header.scss";
+@import "page-content.scss";
+@import "footer.scss";
