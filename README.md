@@ -48,6 +48,10 @@ a working WordPress installations *themes* directory:
 $ yo wp-grunted-theme
 ```
 
+If you need more information on the provided grunt tasks and theme structure,
+read through this article on my blog:
+[Yeoman WordPress theme generator – kickstart a grunting SCSS theme](http://www.danielauener.com/yeoman-wordpress-theme-generator/)
+
 ### Getting To Know Yeoman
 
 If you'd like to get to know Yeoman better and meet some of his friends, [Grunt](http://gruntjs.com) and [Bower](http://bower.io), check out the complete [Getting Started Guide](https://github.com/yeoman/yeoman/wiki/Getting-Started).
