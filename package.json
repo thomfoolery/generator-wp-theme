@@ -1,9 +1,9 @@
 {
-  "name": "generator-wp-grunted-theme",
+  "name": "generator-wp-theme",
   "version": "0.0.1",
   "description": "A WordPress theme YeoMan generator, to kickstart WordPress theme development with yo, sass and grunt",
   "keywords": [
-    "yeoman-generator", "wp-grunted-theme"
+    "yeoman-generator", "wp-theme"
   ],
   "homepage": "https://github.com/danielauener/generator-wp-grunted-theme",
   "bugs": "https://github.com/danielauener/generator-wp-grunted-theme/issues",

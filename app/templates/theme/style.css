@@ -394,7 +394,7 @@ table {
 }
 
 body {
-  background: #222222;
+  background: #fba919;
   color: #efefef;
 }
 
@@ -407,7 +407,7 @@ body.custom-background {
 }
 
 a {
-  color: #75d9c6;
+  color: #fba919;
   text-decoration: none;
 }
 
@@ -706,7 +706,7 @@ p ~ h1 {
   padding: 0.3em 0.4em;
   border: 1px solid #222222;
   margin-top: 0.2em;
-  background-color: #75d9c6;
+  background-color: #fba919;
   color: #222222;
   box-shadow: none;
 }
@@ -757,7 +757,7 @@ p ~ h1 {
 }
 
 .byuser .comment-author {
-  background-color: #75d9c6;
+  background-color: #fba919;
   color: #222222;
 }
 .byuser .comment-author a {
@@ -1080,7 +1080,7 @@ article:after {
 }
 
 .format-quote .date {
-  border-color: #75d9c6;
+  border-color: #fba919;
 }
 
 .format-status .post-title {

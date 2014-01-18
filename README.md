@@ -1,6 +1,6 @@
 ![alt tag](https://raw.github.com/danielauener/generator-wp-grunted-theme/master/header.png)
 
-# generator-wp-grunted-theme
+# generator-wp-theme
 
 A WordPress theme [Yeoman](http://yeoman.io) generator, to kickstart WordPress
 theme development with yo, sass and grunt.
@@ -34,18 +34,18 @@ Not every new computer comes with a Yeoman pre-installed. He lives in the [npm](
 $ npm install -g yo
 ```
 
-To install generator-wp-grunted-theme from npm, you have to install it from this
+To install generator-wp-theme from npm, you have to install it from this
 github repo, run:
 
 ```
-$ npm install -g https://github.com/danielauener/generator-wp-grunted-theme/tarball/master
+$ npm install -g generator-wp-theme
 ```
 
 Finally, initiate the generator. The most useful place to run this command is in
 a working WordPress installations *themes* directory:
 
 ```
-$ yo wp-grunted-theme
+$ yo wp-theme
 ```
 
 If you need more information on the provided grunt tasks and theme structure,
