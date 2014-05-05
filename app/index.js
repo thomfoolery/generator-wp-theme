@@ -1,8 +1,8 @@
 'use strict';
 var util = require('util');
 var path = require('path');
-var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
+var yeoman = require('yeoman-generator');
 
 var WpThemeGenerator = module.exports = function WpThemeGenerator(args, options, config) {
   yeoman.generators.Base.apply(this, arguments);
