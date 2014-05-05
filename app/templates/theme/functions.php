@@ -7,9 +7,8 @@
  * @since <%= themeName %> 1.0
  */
 
-
 /******************************************************************************\
-	Theme support, standard settings, menus and widgets
+  Theme support, standard settings, menus and widgets
 \******************************************************************************/
 
 add_theme_support( 'post-formats', array( 'image', 'quote', 'status', 'link' ) );
@@ -17,55 +16,13 @@ add_theme_support( 'post-thumbnails' );
 add_theme_support( 'automatic-feed-links' );
 
 $custom_header_args = array(
-	'width'         => 980,
-	'height'        => 300,
-	'default-image' => get_template_directory_uri() . '/images/header.png',
+  'width'         => 980,
+  'height'        => 300,
+  'default-image' => get_template_directory_uri() . '/images/header.png',
 );
 add_theme_support( 'custom-header', $custom_header_args );
 
-/**
- * Print custom header styles
- * @return void
- */
-function <%= themeNameSpace %>_custom_header() {
-	$styles = '';
-	if ( $color = get_header_textcolor() ) {
-		echo '<style type="text/css"> ' .
-				'.site-header .logo .blog-name, .site-header .logo .blog-description {' .
-					'color: #' . $color . ';' .
-				'}' .
-			 '</style>';
-	}
-}
-add_action( 'wp_head', '<%= themeNameSpace %>_custom_header', 11 );
-
-$custom_bg_args = array(
-	'default-color' => 'fba919',
-	'default-image' => '',
-);
-add_theme_support( 'custom-background', $custom_bg_args );
-
 register_nav_menu( 'main-menu', __( 'Your sites main menu', '<%= themeNameSpace %>' ) );
-
-if ( function_exists( 'register_sidebars' ) ) {
-	register_sidebar(
-		array(
-			'id' => 'home-sidebar',
-			'name' => __( 'Home widgets', '<%= themeNameSpace %>' ),
-			'description' => __( 'Shows on home page', '<%= themeNameSpace %>' )
-		)
-	);
-
-	register_sidebar(
-		array(
-			'id' => 'footer-sidebar',
-			'name' => __( 'Footer widgets', '<%= themeNameSpace %>' ),
-			'description' => __( 'Shows in the sites footer', '<%= themeNameSpace %>' )
-		)
-	);
-}
-
-if ( ! isset( $content_width ) ) $content_width = 650;
 
 /**
  * Include editor stylesheets
@@ -78,7 +35,7 @@ add_action( 'init', '<%= themeNameSpace %>_editor_style' );
 
 
 /******************************************************************************\
-	Scripts and Styles
+  Scripts and Styles
 \******************************************************************************/
 
 /**
@@ -86,31 +43,118 @@ add_action( 'init', '<%= themeNameSpace %>_editor_style' );
  * @return void
  */
 function <%= themeNameSpace %>_enqueue_scripts() {
-	wp_enqueue_style( '<%= themeNameSpace %>-styles', get_stylesheet_uri(), array(), '1.0' );
-	wp_enqueue_script( 'jquery' );
-	wp_enqueue_script( 'default-scripts', get_template_directory_uri() . '/js/scripts.min.js', array(), '1.0', true );
-	if ( is_singular() ) wp_enqueue_script( 'comment-reply' );
+  // deregister
+  wp_deregister_script('jquery');
+  wp_deregister_script('jquery-migrate');
+  // head
+  wp_enqueue_style( 'ww-styles', get_template_directory_uri() . '/css/style.css', array(), '1.0' );
+  wp_enqueue_script( 'default-head-scripts', get_template_directory_uri() . '/js/head.js', array(), '1.0', false );
+  // foot
+  wp_enqueue_script( 'jquery', "http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js", array(), '1.11.0', !is_admin() );
+  wp_enqueue_script( 'default-body-scripts', get_template_directory_uri() . '/js/body.js', array(), '1.0', !is_admin() );
+  if ( is_singular() ) wp_enqueue_script( 'comment-reply' );
 }
 add_action( 'wp_enqueue_scripts', '<%= themeNameSpace %>_enqueue_scripts' );
 
 
 /******************************************************************************\
-	Content functions
+  Content functions
 \******************************************************************************/
 
-/**
- * Displays meta information for a post
- * @return void
- */
-function <%= themeNameSpace %>_post_meta() {
-	if ( get_post_type() == 'post' ) {
-		echo sprintf(
-			__( 'Posted %s in %s%s by %s. ', '<%= themeNameSpace %>' ),
-			get_the_time( get_option( 'date_format' ) ),
-			get_the_category_list( ', ' ),
-			get_the_tag_list( __( ', <b>Tags</b>: ', '<%= themeNameSpace %>' ), ', ' ),
-			get_the_author_link()
-		);
-	}
-	edit_post_link( __( ' (edit)', '<%= themeNameSpace %>' ), '<span class="edit-link">', '</span>' );
+function bootstrap_setup(){
+
+  class Bootstrap_Walker_Nav_Menu extends Walker_Nav_Menu {
+
+    function start_lvl( &$output, $depth ) {
+
+      $indent = str_repeat( "\t", $depth );
+      $output    .= "\n$indent<ul class=\"dropdown-menu\">\n";
+
+    }
+
+    function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
+
+      $indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
+
+      $li_attributes = '';
+      $class_names = $value = '';
+
+      $classes = empty( $item->classes ) ? array() : (array) $item->classes;
+      $classes[] = ($args->has_children) ? 'dropdown' : '';
+      $classes[] = ($item->current || $item->current_item_ancestor) ? 'active' : '';
+      $classes[] = 'menu-item-' . $item->ID;
+
+
+      $class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item, $args ) );
+      $class_names = ' class="' . esc_attr( $class_names ) . '"';
+
+      $id = apply_filters( 'nav_menu_item_id', 'menu-item-'. $item->ID, $item, $args );
+      $id = strlen( $id ) ? ' id="' . esc_attr( $id ) . '"' : '';
+
+      $output .= $indent . '<li' . $id . $value . $class_names . $li_attributes . '>';
+
+      $attributes  = ! empty( $item->attr_title ) ? ' title="'  . esc_attr( $item->attr_title ) .'"' : '';
+      $attributes .= ! empty( $item->target )     ? ' target="' . esc_attr( $item->target     ) .'"' : '';
+      $attributes .= ! empty( $item->xfn )        ? ' rel="'    . esc_attr( $item->xfn        ) .'"' : '';
+      $attributes .= ! empty( $item->url )        ? ' href="'   . esc_attr( $item->url        ) .'"' : '';
+      $attributes .= ($args->has_children)      ? ' class="dropdown-toggle" data-toggle="dropdown"' : '';
+
+      $item_output = $args->before;
+      $item_output .= '<a'. $attributes .'>';
+      $item_output .= $args->link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $args->link_after;
+      $item_output .= ($args->has_children) ? ' <b class="caret"></b></a>' : '</a>';
+      $item_output .= $args->after;
+
+      $output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
+    }
+
+    function display_element( $element, &$children_elements, $max_depth, $depth=0, $args, &$output ) {
+
+      if ( !$element )
+        return;
+
+      $id_field = $this->db_fields['id'];
+
+      //display this element
+      if ( is_array( $args[0] ) )
+        $args[0]['has_children'] = ! empty( $children_elements[$element->$id_field] );
+      else if ( is_object( $args[0] ) )
+        $args[0]->has_children = ! empty( $children_elements[$element->$id_field] );
+      $cb_args = array_merge( array(&$output, $element, $depth), $args);
+      call_user_func_array(array(&$this, 'start_el'), $cb_args);
+
+      $id = $element->$id_field;
+
+      // descend only when the depth is right and there are childrens for this element
+      if ( ($max_depth == 0 || $max_depth > $depth+1 ) && isset( $children_elements[$id]) ) {
+
+        foreach( $children_elements[ $id ] as $child ){
+
+          if ( !isset($newlevel) ) {
+            $newlevel = true;
+            //start the child delimiter
+            $cb_args = array_merge( array(&$output, $depth), $args);
+            call_user_func_array(array(&$this, 'start_lvl'), $cb_args);
+          }
+          $this->display_element( $child, $children_elements, $max_depth, $depth + 1, $args, $output );
+        }
+          unset( $children_elements[ $id ] );
+      }
+
+      if ( isset($newlevel) && $newlevel ){
+        //end the child delimiter
+        $cb_args = array_merge( array(&$output, $depth), $args);
+        call_user_func_array(array(&$this, 'end_lvl'), $cb_args);
+      }
+
+      //end this element
+      $cb_args = array_merge( array(&$output, $element, $depth), $args);
+      call_user_func_array(array(&$this, 'end_el'), $cb_args);
+
+    }
+
+  }
+
 }
+
+add_action( 'after_setup_theme', 'bootstrap_setup' );

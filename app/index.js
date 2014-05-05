@@ -4,22 +4,22 @@ var path = require('path');
 var yeoman = require('yeoman-generator');
 var chalk = require('chalk');
 
-var WpGruntedThemeGenerator = module.exports = function WpGruntedThemeGenerator(args, options, config) {
+var WpThemeGenerator = module.exports = function WpThemeGenerator(args, options, config) {
   yeoman.generators.Base.apply(this, arguments);
 
   this.on('end', function () {
   	if (this.themeNameSpace) {
 	  	process.chdir(this.themeNameSpace+"/grunt/");
-	    this.installDependencies({ skipInstall: options['skip-install'], bower: false });
+	    this.installDependencies({ skipInstall: options['skip-install'], bower: true });
   	}
   });
 
   this.pkg = JSON.parse(this.readFileAsString(path.join(__dirname, '../package.json')));
 };
 
-util.inherits(WpGruntedThemeGenerator, yeoman.generators.Base);
+util.inherits(WpThemeGenerator, yeoman.generators.Base);
 
-WpGruntedThemeGenerator.prototype.askFor = function askFor() {
+WpThemeGenerator.prototype.askFor = function askFor() {
   var cb = this.async();
 
   console.log("\n\n                           "+chalk.blue.bold("**")+"         \n"+"           "+chalk.blue.bold("****")+"    "+chalk.blue.bold("****")+"    "+chalk.blue.bold("****")+"       \n"+"  "+chalk.yellow("GGGGG")+"  "+chalk.yellow("RRRR")+""+chalk.blue.bold("*")+"  "+chalk.yellow("U")+"   "+chalk.blue.bold("*")+""+chalk.yellow("U")+"  "+chalk.yellow("N")+"   "+chalk.blue.bold("*")+""+chalk.yellow("N")+"  "+chalk.yellow("TTTTTT")+"\n"+""+chalk.yellow("GG")+"       "+chalk.yellow("R")+"   "+chalk.yellow("R")+""+chalk.blue.bold("*")+" "+chalk.yellow("U")+"   "+chalk.blue.bold("*")+""+chalk.yellow("U")+""+chalk.blue.bold("*")+" "+chalk.yellow("N")+" "+chalk.yellow("N")+" "+chalk.blue.bold("*")+""+chalk.yellow("N")+"    "+chalk.yellow("TT")+"  \n"+""+chalk.yellow("GG")+"  "+chalk.yellow("GGG")+"  "+chalk.yellow("RRR")+"  "+chalk.blue.bold("**")+""+chalk.yellow("U")+"  "+chalk.blue.bold("*")+" "+chalk.yellow("U")+""+chalk.blue.bold("**")+""+chalk.yellow("N")+"  "+chalk.yellow("N")+" "+chalk.yellow("N")+"    "+chalk.yellow("TT")+"  \n"+"  "+chalk.yellow("GGGGG")+"  "+chalk.yellow("R")+"   "+chalk.yellow("R")+" "+chalk.blue.bold("**")+" "+chalk.yellow("UU")+"   "+chalk.blue.bold("*")+""+chalk.yellow("N")+" "+chalk.blue.bold("*")+"  "+chalk.yellow("N")+"    "+chalk.yellow("TT")+"  \n"+"                "+chalk.blue.bold("**")+"      "+chalk.blue.bold("**")+"            \n\n "+chalk.yellow.bold("*")+""+chalk.blue.bold("START YOUR GRUNTED WORDPRESS THEME")+""+chalk.yellow.bold("*")+" \n\n");
@@ -78,15 +78,14 @@ WpGruntedThemeGenerator.prototype.askFor = function askFor() {
   }.bind(this));
 };
 
-WpGruntedThemeGenerator.prototype.app = function app() {
+WpThemeGenerator.prototype.app = function app() {
   var currentDate = new Date()
   this.themeCreated = currentDate.getFullYear() + '-' + (currentDate.getMonth() + 1) + '-' + currentDate.getDate();
 
   this.directory('theme', this.themeNameSpace);
-  this.mkdir(this.themeNameSpace+'/dist');
-  this.mkdir(this.themeNameSpace+'/fonts');
   this.mkdir(this.themeNameSpace+'/grunt');
 
   this.template('_gruntfile.js', this.themeNameSpace+'/grunt/gruntfile.js')
   this.template('_package.json', this.themeNameSpace+'/grunt/package.json')
+  this.template('_bower.json',   this.themeNameSpace+'/grunt/bower.json')
 };

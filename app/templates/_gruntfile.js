@@ -1,175 +1,135 @@
 module.exports = function(grunt) {
 
-	grunt.initConfig({
+  grunt.initConfig({
 
-		pkg: grunt.file.readJSON('package.json'),
+    pkg: grunt.file.readJSON('package.json'),
 
-		// chech our JS
-		jshint: {
-			options: {
-				"bitwise": true,
-				"browser": true,
-				"curly": true,
-				"eqeqeq": true,
-				"eqnull": true,
-				"esnext": true,
-				"immed": true,
-				"jquery": true,
-				"latedef": true,
-				"newcap": true,
-				"noarg": true,
-				"node": true,
-				"strict": false,
-				"trailing": true,
-				"undef": true,
-				"globals": {
-					"jQuery": true,
-					"alert": true
-				}
-			},
-			all: [
-				'gruntfile.js',
-				'../js/script.js'
-			]
-		},
+    // chech our JS
+    jshint: {
+      options: {
+        "bitwise": true,
+        "browser": true,
+        "curly": true,
+        "eqeqeq": true,
+        "eqnull": true,
+        "esnext": true,
+        "immed": true,
+        "jquery": true,
+        "latedef": true,
+        "newcap": true,
+        "noarg": true,
+        "node": true,
+        "strict": false,
+        "trailing": true,
+        "undef": true,
+        "globals": {
+          "jQuery": true,
+          "alert": true
+        }
+      },
+      all: [
+        'gruntfile.js'
+      ]
+    },
 
-		// concat and minify our JS
-		uglify: {
-			dist: {
-				files: {
-					'../js/scripts.min.js': [
-						'../js/scripts.js'
-					]
-				}
-			}
-		},
+    // minify our JS
+    uglify: {
 
-		// compile your sass
-		sass: {
-			dev: {
-				options: {
-					style: 'expanded'
-				},
-				src: ['../scss/style.scss'],
-				dest: '../style.css'
-			},
-			prod: {
-				options: {
-					style: 'compressed'
-				},
-				src: ['../scss/style.scss'],
-				dest: '../style.css'
-			},
-			editorstyles: {
-				options: {
-					style: 'expanded'
-				},
-				src: ['../scss/wp-editor-style.scss'],
-				dest: '../css/wp-editor-style.css'
-			}
-		},
+      options: {
+        banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %> */',
+        report: 'gzip'
+      },
 
-		// watch for changes
-		watch: {
-			scss: {
-				files: ['../scss/**/*.scss'],
-				tasks: [
-					'sass:dev',
-					'sass:editorstyles',
-					'notify:scss'
-				]
-			},
-			js: {
-				files: [
-					'<%= jshintTag %>'
-				],
-				tasks: [
-					'jshint',
-					'uglify',
-					'notify:js'
-				]
-			}
-		},
+      dev: {
+        options: {
+          mangle:           false,
+          compress:         false,
+          sourceMap:        function ( path ) { return path + '.map'; }
+        },
+        files: {
+          '../js/head.js': ['./bower_components/modernizr/modernizr.js','../js/head/*.js'],
+          '../js/body.js': ['../js/body/*.js']
+        }
+      },
 
-		// check your php
-		phpcs: {
-			application: {
-				dir: '../*.php'
-			},
-			options: {
-				bin: '/usr/bin/phpcs'
-			}
-		},
+      prod: {
+        files: {
+          '../js/head.js': ['./bower_components/modernizr/modernizr.js','../js/head/*.js'],
+          '../js/body.js': ['../js/body/*.js']
+        }
+      }
+    },
 
-		// notify cross-OS
-		notify: {
-			scss: {
-				options: {
-					title: 'Grunt, grunt!',
-					message: 'SCSS is all gravy'
-				}
-			},
-			js: {
-				options: {
-					title: 'Grunt, grunt!',
-					message: 'JS is all good'
-				}
-			},
-			dist: {
-				options: {
-					title: 'Grunt, grunt!',
-					message: 'Theme ready for production'
-				}
-			}
-		},
+    // compile your sass
+    sass: {
+      options: {
+        loadPath: './bower_components/bootstrap-sass/lib'
+      },
+      dev: {
+        options: {
+          style: 'expanded'
+        },
+        src: ['../scss/style.scss'],
+        dest: '../css/style.css'
+      },
+      dist: {
+        options: {
+          style: 'compressed'
+        },
+        src: ['../scss/style.scss'],
+        dest: '../css/style.css'
+      }
+    },
 
-		clean: {
-			dist: {
-				src: ['../dist'],
-				options: {
-					force: true
-				}
-			}
-		},
+    // watch for changes
+    watch: {
+      scss: {
+        files: ['../scss/**/*.scss'],
+        tasks: [
+          'sass:dev',
+          'notify:scss'
+        ]
+      },
+      js: {
+        files: [
+          '<%= jshint.all %>'
+        ],
+        tasks: [
+          'uglify:dev',
+          'notify:js'
+        ]
+      },
+      livereload: {
+        options: { livereload: true },
+        files: ['../css/**/*.css','../js/**/*.js']
+      }
+    },
 
-		copyto: {
-			dist: {
-				files: [
-					{cwd: '../', src: ['**/*'], dest: '../dist/'}
-				],
-				options: {
-					ignore: [
-						'../dist{,/**/*}',
-						'../doc{,/**/*}',
-						'../grunt{,/**/*}',
-						'../scss{,/**/*}'
-					]
-				}
-			}
-		}
-	});
+    // notify cross-OS
+    notify: {
+      scss: {
+        options: {
+          title: 'Grunt, grunt!',
+          message: 'SCSS is all gravy'
+        }
+      },
+      js: {
+        options: {
+          title: 'Grunt, grunt!',
+          message: 'JS is all good'
+        }
+      },
+      dist: {
+        options: {
+          title: 'Grunt, grunt!',
+          message: 'Theme ready for production'
+        }
+      }
+    }
+    }
+  });
 
-	// Load NPM's via matchdep
-	require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
+  // Default task
+  grunt.registerTask('default', ['watch']);
 
-	// Development task
-	grunt.registerTask('default', [
-		'jshint',
-		'uglify',
-		'sass:dev',
-		'sass:editorstyles'
-	]);
-
-	// Production task
-	grunt.registerTask('dist', function() {
-		grunt.task.run([
-			'jshint',
-			'uglify',
-			'sass:prod',
-			'sass:editorstyles',
-			'clean:dist',
-			'copyto:dist',
-			'notify:dist'
-		]);
-	});
 };
