@@ -36,7 +36,7 @@ module.exports = function(grunt) {
     uglify: {
 
       options: {
-        banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %> */',
+        banner: '/*! <%= pkg.name %> - v<%= pkg.version %> -  */',
         report: 'gzip'
       },
 
@@ -92,7 +92,7 @@ module.exports = function(grunt) {
       },
       js: {
         files: [
-          '<%= jshint.all %>'
+          // '<%= jshint.all %>'
         ],
         tasks: [
           'uglify:dev',

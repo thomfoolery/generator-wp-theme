@@ -85,7 +85,7 @@ WpThemeGenerator.prototype.app = function app() {
   this.directory('theme', this.themeNameSpace);
   this.mkdir(this.themeNameSpace+'/grunt');
 
-  this.template('_gruntfile.js', this.themeNameSpace+'/grunt/gruntfile.js')
-  this.template('_package.json', this.themeNameSpace+'/grunt/package.json')
-  this.template('_bower.json',   this.themeNameSpace+'/grunt/bower.json')
+  this.template('_gruntfile.js', this.themeNameSpace+'/grunt/gruntfile.js');
+  this.template('_package.json', this.themeNameSpace+'/grunt/package.json');
+  this.template('_bower.json',   this.themeNameSpace+'/grunt/bower.json');
 };
