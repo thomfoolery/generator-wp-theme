@@ -5,8 +5,8 @@
   "keywords": [
     "yeoman-generator", "wp-theme"
   ],
-  "homepage": "https://github.com/danielauener/generator-wp-grunted-theme",
-  "bugs": "https://github.com/danielauener/generator-wp-grunted-theme/issues",
+  "homepage": "https://github.com/thomfoolery/generator-wp-grunted-theme",
+  "bugs": "https://github.com/thomfoolery/generator-wp-grunted-theme/issues",
   "author": {
     "name": "Daniel Auener",
     "email": "",
@@ -15,7 +15,7 @@
   "main": "app/index.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/danielauener/generator-wp-grunted-theme.git"
+    "url": "git://github.com/thomfoolery/generator-wp-grunted-theme.git"
   },
   "scripts": {
     "test": "mocha"
