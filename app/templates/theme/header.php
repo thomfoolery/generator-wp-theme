@@ -1,10 +1,10 @@
 <?php
 /**
- * <%= themeName %> template for displaying the header
+ * cvp template for displaying the header
  *
  * @package WordPress
- * @subpackage <%= themeName %>
- * @since <%= themeName %> 1.0
+ * @subpackage cvp
+ * @since cvp 1.0
  */
 ?>
 
@@ -33,7 +33,7 @@
         <a class="logo" href="<?php echo home_url(); ?>" title="<?php bloginfo( 'name' ); ?>">
 <?php if ( '' != get_custom_header()->url ) : ?>
           <img src="<?php header_image(); ?>" class="custom-header" height="<?php echo get_custom_header()->height; ?>" width="<?php echo get_custom_header()->width; ?>" alt="Site logo" />
-<?php else; ?>
+<?php else : ?>
           <h1 class="blog-name"><?php bloginfo( 'name' ); ?></h1>
 <?php endif; ?>
           <div class="blog-description sr-only"><?php bloginfo( 'description' ); ?></div>
@@ -52,7 +52,6 @@
   wp_nav_menu(
     array(
       'walker'          => new Bootstrap_Walker_Nav_Menu(),
-      'menu'            => 'primary-menu',
       'container'       => 'div',
       'menu_class'      => 'nav navbar-nav',
       'container_id'    => 'primary-menu',

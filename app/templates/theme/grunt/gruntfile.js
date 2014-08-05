@@ -92,7 +92,7 @@ module.exports = function(grunt) {
       },
       js: {
         files: [
-          // '<%= jshint.all %>'
+          '<%= jshint.all %>'
         ],
         tasks: [
           'uglify:dev',
@@ -126,8 +126,10 @@ module.exports = function(grunt) {
         }
       }
     }
-    }
   });
+
+  // Load NPM's via matchdep
+  require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 
   // Default task
   grunt.registerTask('default', ['watch']);
