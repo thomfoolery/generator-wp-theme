@@ -24,10 +24,6 @@
 
   </h1>
 
-  <div class="post-meta"><?php
-    <%= themeNameSpace %>_post_meta(); ?>
-  </div>
-
   <div class="post-content"><?php
 
     if ( '' != get_the_post_thumbnail() ) : ?>
