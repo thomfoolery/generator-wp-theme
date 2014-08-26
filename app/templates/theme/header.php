@@ -31,11 +31,8 @@
       <header class="site-header">
 
         <a class="logo" href="<?php echo home_url(); ?>" title="<?php bloginfo( 'name' ); ?>">
-<?php if ( '' != get_custom_header()->url ) : ?>
-          <img src="<?php header_image(); ?>" class="custom-header" height="<?php echo get_custom_header()->height; ?>" width="<?php echo get_custom_header()->width; ?>" alt="Site logo" />
-<?php else : ?>
-          <h1 class="blog-name"><?php bloginfo( 'name' ); ?></h1>
-<?php endif; ?>
+          <img src="<?php get_template_directory_uri() ?>/img/header-logo.png" alt="Site logo" />
+          <div class="blog--name sr-only"><?php bloginfo( 'name' ); ?></div>
           <div class="blog-description sr-only"><?php bloginfo( 'description' ); ?></div>
         </a>
 
@@ -55,7 +52,7 @@
       'container'       => 'div',
       'menu_class'      => 'nav navbar-nav',
       'container_id'    => 'primary-menu',
-      'container_class' => 'navbar-collapse collapse F-sans-pro'
+      'container_class' => 'navbar-collapse collapse'
     )
   );
 ?>

@@ -15,11 +15,6 @@ add_theme_support( 'post-formats', array( 'image', 'quote', 'status', 'link' ) )
 add_theme_support( 'post-thumbnails' );
 add_theme_support( 'automatic-feed-links' );
 
-$custom_header_args = array(
-  'default-image' => get_template_directory_uri() . '/img/header.png',
-);
-add_theme_support( 'custom-header', $custom_header_args );
-
 function register_custom_menus(){
   register_nav_menu( 'primary-menu',   'Primary menu' );
 }
