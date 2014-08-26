@@ -31,12 +31,13 @@
       <header class="site-header">
 
         <a class="logo" href="<?php echo home_url(); ?>" title="<?php bloginfo( 'name' ); ?>">
-          <img src="<?php get_template_directory_uri() ?>/img/header-logo.png" alt="Site logo" />
+          <img src="<?php echo get_template_directory_uri() ?>/img/header-logo.png" alt="Site logo" />
           <div class="blog--name sr-only"><?php bloginfo( 'name' ); ?></div>
           <div class="blog-description sr-only"><?php bloginfo( 'description' ); ?></div>
         </a>
 
         <nav class="navbar" role="navigation">
+          <a href="#main-content" class="sr-only">Skip to main content</a>
           <button class="btn btn-navbar navbar-toggle" data-toggle="collapse" data-target="#primary-menu">
             Menu
             <div class="icon">

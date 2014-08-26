@@ -15,6 +15,6 @@
   ],
   "dependencies": {
     "modernizr": "~2.7.2",
-    "bootstrap-sass": "~3.0.2"
+    "twbs-bootstrap-sass": "~3.2.0+1"
   }
 }

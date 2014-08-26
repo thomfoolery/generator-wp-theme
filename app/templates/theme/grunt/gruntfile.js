@@ -53,6 +53,10 @@ module.exports = function(grunt) {
       },
 
       prod: {
+        options: {
+          mangle:           true,
+          compress:         true
+        },
         files: {
           '../js/head.js': ['./bower_components/modernizr/modernizr.js','../js/head/*.js'],
           '../js/body.js': ['../js/body/*.js']
@@ -63,7 +67,7 @@ module.exports = function(grunt) {
     // compile your sass
     sass: {
       options: {
-        loadPath: './bower_components/bootstrap-sass/lib'
+        loadPath: './bower_components/twbs-bootstrap-sass/assets/stylesheets'
       },
       dev: {
         options: {
@@ -101,7 +105,7 @@ module.exports = function(grunt) {
       },
       livereload: {
         options: { livereload: true },
-        files: ['../css/**/*.css','../js/**/*.js']
+        files: ['../css/**/*.css','../js/*.js','../*.php']
       }
     },
 
