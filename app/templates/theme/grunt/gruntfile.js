@@ -28,7 +28,8 @@ module.exports = function(grunt) {
         }
       },
       all: [
-        'gruntfile.js'
+        'gruntfile.js',
+        '../js/*.js'
       ]
     },
 
@@ -52,7 +53,7 @@ module.exports = function(grunt) {
         }
       },
 
-      prod: {
+      dist: {
         options: {
           mangle:           true,
           compress:         true
@@ -137,5 +138,6 @@ module.exports = function(grunt) {
 
   // Default task
   grunt.registerTask('default', ['watch']);
+  grunt.registerTask('build', ['jshint','sass:dist','uglify:dist','notify:dist']);
 
 };

@@ -10,7 +10,11 @@
 	License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
 
-@import "bootstrap.scss";
-@import "header.scss";
-@import "page-content.scss";
-@import "footer.scss";
+@import "variables";
+
+@import "bootstrap";
+@import "globals";
+@import "header";
+@import "page-content";
+@import "front-page";
+@import "footer";

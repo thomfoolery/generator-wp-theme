@@ -37,7 +37,7 @@ get_header(); ?>
     ?>
     <div class="pagination">
 
-      <?php get_template_part( 'template-part', 'pagination' ); ?>
+      <?php get_template_part( 'tpl-partial', 'pagination' ); ?>
 
     </div>
   </section>
