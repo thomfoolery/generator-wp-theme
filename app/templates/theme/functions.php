@@ -15,6 +15,12 @@ add_theme_support( 'post-formats', array( 'image'/*, 'quote', 'status', 'link'*/
 add_theme_support( 'post-thumbnails' );
 add_theme_support( 'automatic-feed-links' );
 
+if ( ! function_exists('theme_img_dir') ) :
+  function theme_img_dir() {
+    echo get_template_directory_uri() . "/img";
+  }
+endif;
+
 function register_custom_menus(){
   register_nav_menu( 'primary-menu',   'Primary menu' );
 }

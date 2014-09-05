@@ -17,12 +17,13 @@
   <head>
     <meta charset="<?php bloginfo( 'charset' ); ?>" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title><?php wp_title( ); ?></title>
+    <title><?php if(!is_home()){wp_title('');echo ' &raquo; ';}bloginfo('name');?></title>
     <meta name="viewport" content="width=device-width" />
-    <!--[if lt IE 9]>
-      <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.js"></script>
-    <![endif]-->
+    <script src="<?php echo get_template_directory_uri(); ?>/js/head.js"></script>
     <?php wp_head(); ?>
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
     <!-- for detecting screen break points -->
     <div class="visible-xs"></div><div class="visible-sm"></div><div class="visible-md"></div><div class="visible-lg"></div><div class="visible-xl"></div>
   </head>
