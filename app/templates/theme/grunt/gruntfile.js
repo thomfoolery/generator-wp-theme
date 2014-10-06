@@ -45,11 +45,16 @@ module.exports = function(grunt) {
         options: {
           mangle:           false,
           compress:         false,
-          sourceMap:        function ( path ) { return path + '.map'; }
+          sourceMap:        true
         },
         files: {
-          '../js/head.js': ['./bower_components/modernizr/modernizr.js','../js/head/*.js'],
-          '../js/body.js': ['../js/body/*.js']
+          '../js/head.js': [
+            './bower_components/modernizr/modernizr.js',
+            '../js/head/*.js'
+          ],
+          '../js/body.js': [
+            '../js/body/*.js'
+          ]
         }
       },
 
@@ -59,8 +64,13 @@ module.exports = function(grunt) {
           compress:         true
         },
         files: {
-          '../js/head.js': ['./bower_components/modernizr/modernizr.js','../js/head/*.js'],
-          '../js/body.js': ['../js/body/*.js']
+          '../js/head.js': [
+            './bower_components/modernizr/modernizr.js',
+            '../js/head/*.js'
+          ],
+          '../js/body.js': [
+            '../js/body/*.js'
+          ]
         }
       }
     },

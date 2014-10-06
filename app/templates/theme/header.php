@@ -19,7 +19,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title><?php if(!is_home()){wp_title('');echo ' &raquo; ';}bloginfo('name');?></title>
     <meta name="viewport" content="width=device-width" />
-    <script src="<?php echo get_template_directory_uri(); ?>/js/head.js"></script>
     <?php wp_head(); ?>
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>

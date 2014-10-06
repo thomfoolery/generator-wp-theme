@@ -3,12 +3,11 @@
   "version": "0.0.1",
   "devDependencies": {
     "grunt": "~0.4.2",
-    "grunt-contrib-watch": "~0.4.3",
-    "grunt-contrib-uglify": "~0.2.5",
-    "grunt-sass": "~0.8.1",
-    "grunt-contrib-jshint": "~0.7.2",
-    "grunt-notify": "~0.2.16",
-    "grunt-contrib-sass": "~0.6.0",
+    "grunt-contrib-watch": "^0.6.0",
+    "grunt-contrib-uglify": "^0.6.0",
+    "grunt-contrib-jshint": "^0.7.0",
+    "grunt-notify": "^0.3.0",
+    "grunt-contrib-sass": "^0.8.0",
     "matchdep": "^0.3.0"
   },
   "dependencies": {
