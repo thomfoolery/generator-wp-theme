@@ -15,7 +15,7 @@ add_theme_support( 'post-formats', array( 'image'/*, 'quote', 'status', 'link'*/
 add_theme_support( 'post-thumbnails' );
 add_theme_support( 'automatic-feed-links' );
 
-include_once "./includes/theme_general_settings.php";
+include_once "includes/theme_general_settings.php";
 
 function register_custom_menus(){
   register_nav_menu( 'primary-menu',   'Primary menu' );
@@ -52,5 +52,5 @@ add_action( 'wp_enqueue_scripts', 'WP_theme_enqueue_scripts' );
 \******************************************************************************/
 
 
-include_once "./includes/theme_functions.php";
-include_once "./includes/theme_walkers.php";
+include_once "includes/theme_functions.php";
+include_once "includes/theme_walkers.php";
