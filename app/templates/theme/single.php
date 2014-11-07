@@ -24,9 +24,10 @@ get_header(); ?>
           </div>
 
           <?php
-            if ( comments_open() || get_comments_number() > 0 ) :
-              comments_template( '', true );
-            endif;
+            // COMMENTS DISABLED
+            // if ( comments_open() || get_comments_number() > 0 ) :
+            //   comments_template( '', true );
+            // endif;
           ?>
 
         </aside><?php
