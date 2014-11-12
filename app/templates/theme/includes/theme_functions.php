@@ -1,5 +1,7 @@
 <?php
 
+add_filter( 'user_can_richedit', '__return_false' );
+
 function disable_auto_paragraphs($content) {
   if ( strpos($content,'<!--DISABLE AUTO PARAGRAPHS-->') !== false ) {
     remove_filter ('the_content','wpautop');
