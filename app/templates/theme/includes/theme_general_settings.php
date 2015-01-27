@@ -8,11 +8,11 @@ class new_general_setting {
   }
   function register_linkedin() {
     register_setting('general', 'linkedin_account', 'esc_attr');
-    add_settings_field('link_account', '<label for="linkedin_account">'.__('LinkedIn Account', 'linkedin_account' ).'</label>', array(&$this, 'fields_linkedin'), 'general');
+    add_settings_field('linkedin_account', '<label for="linkedin_account">'.__('LinkedIn Account', 'linkedin_account' ).'</label>', array(&$this, 'fields_linkedin'), 'general');
   }
   function register_twitter() {
     register_setting('general', 'twitter_account', 'esc_attr');
-    add_settings_field('link_account', '<label for="twitter_account">'.__('Twitter Account', 'twitter_account' ).'</label>', array(&$this, 'fields_twitter'), 'general');
+    add_settings_field('twitter_account', '<label for="twitter_account">'.__('Twitter Account', 'twitter_account' ).'</label>', array(&$this, 'fields_twitter'), 'general');
   }
   function register_facebook() {
       register_setting('general', 'facebook_account', 'esc_attr');

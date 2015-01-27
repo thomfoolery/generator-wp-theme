@@ -9,10 +9,10 @@
 ?>
 
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="ie ie-no-support" <?php language_attributes(); ?>> <![endif]-->
-<!--[if IE 7]>         <html class="ie ie7" <?php language_attributes(); ?>> <![endif]-->
-<!--[if IE 8]>         <html class="ie ie8" <?php language_attributes(); ?>> <![endif]-->
-<!--[if IE 9]>         <html class="ie ie9" <?php language_attributes(); ?>> <![endif]-->
+<!--[if lt IE 7]>      <html class="ie ie-no-support lt-ie7 lt-ie8 lt-ie9 lt-ie10" <?php language_attributes(); ?>> <![endif]-->
+<!--[if IE 7]>         <html class="ie ie7 lt-ie8 lt-ie9 lt-ie10" <?php language_attributes(); ?>> <![endif]-->
+<!--[if IE 8]>         <html class="ie ie8 lt-ie9 lt-ie10" <?php language_attributes(); ?>> <![endif]-->
+<!--[if IE 9]>         <html class="ie ie9 lt-ie10" <?php language_attributes(); ?>> <![endif]-->
 <!--[if gt IE 9]><!--> <html <?php language_attributes(); ?>> <!--<![endif]-->
   <head>
     <meta charset="<?php bloginfo( 'charset' ); ?>" />
@@ -38,28 +38,47 @@
           <div class="blog-description sr-only"><?php bloginfo( 'description' ); ?></div>
         </a>
 
-        <nav class="navbar" role="navigation">
-          <a href="#main-content" class="sr-only">Skip to main content</a>
-          <button class="btn btn-navbar navbar-toggle" data-toggle="collapse" data-target="#primary-menu">
-            Menu
-            <div class="icon">
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </div>
-          </button>
+        <a href="#main-content" class="sr-only">Skip to main content</a>
+        <button class="btn btn-navbar navbar-toggle" data-toggle="collapse" data-target="#primary-menu">
+          <span class="glyphicon glyphicon-menu-hamburger"></span>
+          Menu
+        </button>
+
+        <nav id="primary-menu" class="navbar navbar-collapse collapse" role="navigation">
 <?php
+
   wp_nav_menu(
     array(
       'walker'          => new Bootstrap_Walker_Nav_Menu(),
       'container'       => 'div',
       'menu_class'      => 'nav navbar-nav',
-      'container_id'    => 'primary-menu',
-      'container_class' => 'navbar-collapse collapse'
+      'container_class' => 'navbar-nav-container'
     )
   );
-?>
-        </nav>
 
+?>
+            <div class="social-links">
+<?php
+          if ( isset( $TW_account_url ) && $TW_account_url != false ) : ?>
+            <a href="<?php echo $TW_account_url; ?>">
+              <i class="socicon socicon-twitter"></i>
+              <span class="sr-only">Twitter Account</span>
+            </a><?php
+          endif;
+          if ( isset( $FB_account_url ) && $FB_account_url != false ) : ?>
+            <a href="<?php echo $FB_account_url; ?>">
+              <i class="socicon socicon-facebook"></i>
+              <span class="sr-only">Facebook Account</span>
+            </a><?php
+          endif;
+          if ( isset( $LI_account_url ) && $LI_account_url != false ) : ?>
+            <a href="<?php echo $LI_account_url; ?>">
+              <i class="socicon socicon-linkedin"></i>
+              <span class="sr-only">Linkedin Account</span>
+            </a><?php
+          endif;
+?>
+          </div>
+        </nav>
 
       </header>
